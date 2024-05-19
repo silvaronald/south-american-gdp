@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS gdp_sa;
+USE gdp_sa;
+
+CREATE TABLE IF NOT EXISTS country (
+    id VARCHAR(2) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    iso3_code VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS gdp (
+    country_id VARCHAR(2) PRIMARY KEY,
+    year INT NOT NULL,
+    value FLOAT NOT NULL
+    FOREIGN KEY (country_id) REFERENCES country(id)
+)

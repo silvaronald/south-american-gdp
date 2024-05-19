@@ -1,5 +1,5 @@
 import requests
-import pandas as pd
+import pymysql
 
 class GDP:
     _2019 = None
@@ -54,3 +54,18 @@ while True:
     else:
         print(f"Failed to retrieve data: {response.status_code}")
         break
+
+print(len(countries))
+
+connection = pymysql.connect(
+    host='localhost',
+    port=3306,
+    user='root',
+    password='password',
+    database='gdp_sa'
+)
+
+with connection.cursor() as cursor:
+        cursor.execute("SELECT DATABASE();")
+        database = cursor.fetchone()
+        print("You're connected to database:", database)
