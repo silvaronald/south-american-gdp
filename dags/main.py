@@ -25,7 +25,7 @@ def main():
 
 with DAG('main_dag', 
          default_args=default_args, 
-         schedule_interval=None, 
+         schedule_interval='*/5 * * * *', 
          catchup=False) as dag:
 
     run_script = PythonOperator(

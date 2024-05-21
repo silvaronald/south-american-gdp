@@ -35,11 +35,10 @@ class API():
                     gdp_value = row['value']
 
                     if gdp_value:
-                        gdp_value /= 10**9
+                        gdp_value /= 10**9 # Convert to billions
 
                     country.gdp[year] = gdp_value
                 
-                #print(country.gdp)
                 countries.append(country)
 
                 self.params['page'] += 1
@@ -48,8 +47,5 @@ class API():
                 raise(Exception(f"Failed to retrieve data: {response.status_code}"))
         
         self.params['page'] = 1
-
-        # for country in countries:
-        #     print(country.gdp)
 
         return countries

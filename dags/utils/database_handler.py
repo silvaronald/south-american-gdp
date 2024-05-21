@@ -3,14 +3,6 @@ from utils.country import Country
 
 class DatabaseHandler:
     def __init__(self, connection) -> None:
-        # self.connection = pymysql.connect(
-        #     host='localhost',
-        #     port=3306,
-        #     user='root',
-        #     password='password',
-        #     database='gdp_sa'
-        # )
-
         self.connection = connection
 
     @staticmethod
@@ -43,7 +35,11 @@ class DatabaseHandler:
         with self.connection.cursor() as cursor:
             cursor.execute(select_query)
 
+            column_names = [d[0] for d in cursor.description]
+            
+            print('---'.join(column_names))
+            
             rows = cursor.fetchall()
 
             for row in rows:
-                print(row)
+                print('---'.join(map(str, row)))
