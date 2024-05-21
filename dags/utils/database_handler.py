@@ -1,4 +1,3 @@
-import pymysql
 from utils.country import Country
 
 class DatabaseHandler:
