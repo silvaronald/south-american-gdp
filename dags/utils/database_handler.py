@@ -1,15 +1,17 @@
 import pymysql
-from country import Country
+from utils.country import Country
 
 class DatabaseHandler:
-    def __init__(self) -> None:
-        self.connection = pymysql.connect(
-            host='localhost',
-            port=3306,
-            user='root',
-            password='password',
-            database='gdp_sa'
-        )
+    def __init__(self, connection) -> None:
+        # self.connection = pymysql.connect(
+        #     host='localhost',
+        #     port=3306,
+        #     user='root',
+        #     password='password',
+        #     database='gdp_sa'
+        # )
+
+        self.connection = connection
 
     @staticmethod
     def get_query(query):

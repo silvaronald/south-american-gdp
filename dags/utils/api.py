@@ -1,4 +1,4 @@
-from country import Country
+from utils.country import Country
 import requests
 
 class API():
